@@ -1,60 +1,84 @@
-# CodeIgniter 4 Framework
+# Configuração do Projeto CodeIgniter 4
 
-## What is CodeIgniter?
+Este documento fornece instruções detalhadas para configurar e executar o projeto baseado no framework CodeIgniter 4.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Requisitos
+Certifique-se de que você possui os seguintes requisitos instalados em seu ambiente:
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+- **PHP** (>=8.0)
+- **Composer** (https://getcomposer.org/)
+- **Servidor de banco de dados** (MySQL, etc.)
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Instalação das Dependências
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+1. Clone este repositório em seu ambiente local:
+   ```bash
+   git clone https://github.com/joaocg/teste-ezoom.git
+   cd teste-ezoom
+   ```
 
-## Important Change with index.php
+2. Instale as dependências do projeto utilizando o Composer:
+   ```bash
+   composer install
+   ```
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+## Configuração do CodeIgniter 4
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+1. Copie o arquivo `env.example` para `.env`:
+   ```bash
+   cp env.example .env
+   ```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+2. Edite o arquivo `.env` para configurar os dados do banco de dados. Altere as seguintes linhas de acordo com o seu ambiente:
 
-## Repository Management
+   ```ini
+   # Base de Dados
+   database.default.hostname = localhost
+   database.default.database = seu_banco_de_dados
+   database.default.username = seu_usuario
+   database.default.password = sua_senha
+   database.default.DBDriver = MySQLi
+   database.default.DBPrefix = 
+   ```
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+## Executar as Migrações
+As migrações são responsáveis por criar a estrutura inicial do banco de dados.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+1. Certifique-se de que seu banco de dados está configurado e acessível.
+2. Rode o seguinte comando para executar as migrações:
+   ```bash
+   php spark migrate
+   ```
 
-## Contributing
+## Executar os Seeders
+Os seeders são responsáveis por popular o banco de dados com dados iniciais ou de teste.
 
-We welcome contributions from the community.
+1. Para rodar os seeders configurados, use o seguinte comando:
+   ```bash
+   php spark db:seed UsersSeeder
+   ```
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
+## Servidor Local
+Para iniciar o servidor local de desenvolvimento, execute o seguinte comando:
 
-## Server Requirements
+```bash
+php spark serve
+```
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+A aplicação estará acessível em: [http://localhost:8080](http://localhost:8080)
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+---
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+## Usuários para Lgin
 
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+- **User Test 1**:
+  ```bash
+  E-mail: sdvdfb@gmail.com
+  Senha: 123456
+  ```
+- **User Test 2**:
+  ```bash
+  E-mail: sdvdfb2@gmail.com
+  Senha: 123456
+  ```
+  

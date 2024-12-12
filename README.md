@@ -67,7 +67,6 @@ php spark serve
 
 A aplicação estará acessível em: [http://localhost:8080](http://localhost:8080)
 
----
 
 ## Usuários para Lgin
 
